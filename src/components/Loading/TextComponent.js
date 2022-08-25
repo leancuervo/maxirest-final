@@ -13,7 +13,7 @@ export function TextComponent ({ user = true, children }) {
     return (
         <>
             {children}
-            {/*<h2>Bla Bla Bla 2 </h2>*/}
+           
         
         </>
     )

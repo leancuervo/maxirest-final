@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import { getFetch } from '../helpers/getFetch'
+
 import Producto from '../helpers/Producto'
 import Item from '../navegacion/Item'
 
@@ -24,9 +24,7 @@ const ItemList = ({product}) => {
 
               )}
         </div>
-    // <div style={{ display: 'flex', justifyContent: 'center', flexWarp: 'wrap'}}>
-    //     {items.map(item => <Item item={item} key={item.id}/>)}
-    // </div>
+
   )
 }
 

@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
-// import {getFetch} from '../../components/helpers/getFetch'
 import Loading from '../../components/Loading/Loading'
 import { TextComponent } from '../../components/Loading/TextComponent'
 import Producto from '../../components/helpers/Producto'
@@ -10,7 +9,7 @@ import {useEffect ,useState} from 'react'
 
 
 const ItemDetailContainer = () => {
-  // const [producto, setProducto] = useState ({})
+
   const [product, setProducts] = useState([{}])
   const {categoriaId} = useParams()
   const [loading, setLoading] = useState(true)
@@ -25,34 +24,7 @@ const ItemDetailContainer = () => {
       .finally(() => setLoading(false))
     }
   },[])
-    // }else {
-    //   Productos()
-    //   .then(resp => setProducts(resp))
-    //   .catch (err => console.log(err))
-    //   .finally(() => setLoading(false))
-    // }
-  // useEffect( () =>{
-    //       Productos(categoriaId)
-    // useEffect (() =>{
-    //     const db = getFirestore ()
-    //     const queryProduct = doc(db, 'items', categoriaId )
-    //     getDoc(queryProduct)
-    //     .then(resp => setProducto( {id: resp.id, ...resp.data()}))
-    // },[])
-  //       .then (data => setProducto(data))
-  //       .catch (err => console.log(err))
-  //       .finally(() => setLoading(false))
-  // }, [categoriaId])
-
-
-// useEffect(() => {
-//   const db = getFirestore()
-//   const querryColleccion = collection(db, 'items')
-//   getDocs(querryColleccion)
-//   .then(resp => setProducts(resp.docs.map(prod => ({id: prod.id, ...prod.data()}))))
-//   .catch(err => console.log(err))
-//   .finally(() => setLoading(false))
-// })
+ 
 
 
   
@@ -66,10 +38,10 @@ const ItemDetailContainer = () => {
 
 
     <TextComponent> 
-      <ItemDetail product={product} />
+      <ItemDetail product={product.id} />
     </TextComponent> 
     
-    {/* { detalleId.map(prod =><ItemDetail key={prod.id} prod={prod}/>)} */}
+    
   </div>
 )
 }

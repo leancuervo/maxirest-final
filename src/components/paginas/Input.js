@@ -16,7 +16,7 @@ export const Input = () => {
         <div className="border border-1 border-warning">
             <input className="m-5"
             onClick= { inputHandler }
-            // onKeyDown={inputHandler}
+            
             type="text"
             name="nombre"
             id="i"/>

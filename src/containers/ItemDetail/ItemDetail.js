@@ -1,8 +1,7 @@
 
 import ItemCount from '../../components/ItemCount/ItemCount';
 import {useCartContext} from "../../context/CartContext"
-// import {Productos} from "../../components/helpers/Productos"
-// import { Input } from '../../components/paginas/Input';
+
 import Intercambio from '../../components/ItemCount/Intercambio';
 import { useState } from 'react';
 
@@ -35,9 +34,7 @@ import { useState } from 'react';
                         <div className='producto__button' style= { { display:'flex', flexDirection: 'col', justifyContent: 'center', flexWarp: 'warp'}}>
                           <Intercambio/>
                         </div>
-                        {/* <div>
-                          <a href="/" className='btn'></a>
-                        </div> */}
+                        
                     </div>
                     <div className='col'>
                       <ItemCount initial={1} stock={5} onAdd={onAdd} />

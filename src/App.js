@@ -13,7 +13,7 @@ import { Input } from './components/paginas/Input';
 
 
 
-//const ItemDetailContainer = lazy(() => import('./containers/ItemDetailContainer/ItemDetailContainer'))
+
 
 class App extends React.Component {
 
@@ -38,7 +38,7 @@ class App extends React.Component {
                           <Route path='*' element={<Navigate to='/'/>}/>
                           
 
-                          {/* <ItemListContainer /> */}
+                          
                       </Routes>
                         
                     </div>
@@ -51,39 +51,4 @@ class App extends React.Component {
 }
 
 
-
-// function App() {
-  
-//   let saludo = 'Hola!'
-
-//   return (
-
-    
-
-//     <BrowserRouter>
-//       <CartContextProvider>
-//           <div className="App border border-1 border-danger">
-//             <Navbar />
-            
-//             <Routes>
-//                 <Route index path='/' element={<ItemListContainer/>} />
-//                 <Route index path='/categoria/:categoriaId' element={<ItemListContainer/>} />
-//                 <Route path='/detalle/:productoId' element ={
-//                   <Suspense fallback={<div>Cargando...</div>}>
-//                     <ItemDetailContainer/>
-//                   </Suspense>
-//                 } />
-//                 <Route path='/cart' element={<CartContainer/>}/>
-//                 <Route path='*' element={<Navigate to='/'/>}/>
-                
-
-//                 {/* <ItemListContainer /> */}
-//             </Routes>
-              
-//           </div>
-//       </CartContextProvider>
-//     </BrowserRouter>
-    
-//   );
-// }
 export default App;
