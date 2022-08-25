@@ -38,7 +38,7 @@ const ItemDetailContainer = () => {
 
 
     <TextComponent> 
-      <ItemDetail product={product.id} />
+      <ItemDetail product={product} />
     </TextComponent> 
     
     
