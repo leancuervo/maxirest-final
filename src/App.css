@@ -1,4 +1,7 @@
 .App {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -36,3 +39,53 @@
     transform: rotate(360deg);
   }
 }
+
+li {
+  list-style: none;
+}
+
+.conteiner-Cart { 
+
+  min-height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+
+}
+
+.cartWidget{
+  cursor: pointer;
+  position: relative;
+}
+.cerrar{
+  cursor: pointer;
+  display: none;
+}
+
+
+.cartWidget span{
+  position: absolute;
+  top:-14px;
+  right: 0px;
+  background: crimson;
+  font-weight: 700;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 3px 5px;
+}
+
+.navbar {
+  display: flex;
+
+
+}
+
+.navbar ul li {
+  text-transform: uppercase;
+  color: #222 ;
+  padding: 0 15px;
+}
+
+
