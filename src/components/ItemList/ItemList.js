@@ -4,7 +4,7 @@ import Producto from '../helpers/Producto'
 import Item from '../navegacion/Item'
 
 
-const ItemList = ({product}) => {
+const ItemList = ({products}) => {
 
        let [productos, setProductos] = useState ([]);
 
@@ -17,7 +17,7 @@ const ItemList = ({product}) => {
        },[])
 
   return (
-          <div style= { { display:'flex', flexDirection: 'row', justifyContent: 'center', flexWarp: 'warp'}}>
+          <div className='productContainer' >
               {productos.map( item => 
               
                       <Item item={item} key={item.id}/>

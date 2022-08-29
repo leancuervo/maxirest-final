@@ -7,10 +7,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
 import React, { Suspense, useState } from 'react';
-import CartContextProvider, { CartContext } from './context/CartContext';
+import { useCartContext } from './context/CartContext';
 import CartContainer from './containers/CartContainer/CartContainer';
 import { Input } from './components/paginas/Input';
-
 
 
 
@@ -21,8 +20,9 @@ class App extends React.Component {
     return(
       <div className='app'>
 
+          
           <BrowserRouter>
-                <CartContextProvider>
+                <useCartContext>
                     <div className="App border border-1 border-danger">
                       <Navbar />
                       
@@ -42,8 +42,10 @@ class App extends React.Component {
                       </Routes>
                         
                     </div>
-                </CartContextProvider>
+                </useCartContext>
           </BrowserRouter>
+          
+          
 
       </div>
     )

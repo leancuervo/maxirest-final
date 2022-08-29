@@ -5,28 +5,51 @@ import Producto from '../../components/helpers/Producto'
 import Loading from '../../components/Loading/Loading'
 import { ProductsData } from '../../Data/ProductsData'
 
-const ItemListContainer2 = () => {
+const ItemListContainer = () => {
+
+    const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(false)
+  const {ProductsData} = useParams()
+  const [bool, setBool] = useState(true)
+
+  useEffect ( () =>{
+    if (ProductsData) {
+      Producto()
+      .then(resp => setProducts(resp.fitler(product =>product.categoria === ProductsData)))
+      .catch (err => console.log(err))
+      .finally(() => setLoading(false))
+    }else {
+      Producto()
+      .then(resp => setProducts(resp))
+      .catch (err => console.log(err))
+      .finally(() => setLoading(false))
+    }
+    
+  }, [ProductsData])
+
+  const handleClick=(e)=>{
+        e.preventDefault()
+        setBool(!bool)
+      }
+
   return(
-    <div className='productContainer'>
-      {ProductsData.map((product, i) => (
-      <>
-          <div key={i} className='product'>
-              <img src={product.image} alt={product.name}/>
-          
-            <div>
-              <p>
-                {product.name} - ${product.price}
-              </p>
-            </div>
-            <button className='addBtn' onClick={() => console.log (product)}>Agregar al Carrito</button>
-        </div>
-      </>  
-      ))}
-    </div>
+    <div >
+      
+      
+        { loading ? 
+
+          <Loading/>
+      :
+
+      
+              <ItemList  products={products}/> }
+              
+
+    </div>   
   )
 }
 
-export default ItemListContainer2
+export default ItemListContainer
 // const ItemListContainer = () => {
 
 
