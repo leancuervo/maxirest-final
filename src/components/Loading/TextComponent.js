@@ -5,7 +5,7 @@ export function TextComponent ({ user = true, children }) {
     const token = localStorage.getItem ('token')
 
 
-    if (!user) {
+    if (!token) {
         return <Navigate to ='/'><h2>Bla Bla Bla 1</h2></Navigate>
         
     }

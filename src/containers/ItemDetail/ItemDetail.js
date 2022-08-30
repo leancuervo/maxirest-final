@@ -1,34 +1,44 @@
 
 import ItemCount from '../../components/ItemCount/ItemCount';
-import {useCartContext} from "../../context/CartContext"
-
+import CartContextProvider from "../../context/CartContext"
+import {useCartContext } from "../../context/CartContext"
 import Intercambio from '../../components/ItemCount/Intercambio';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
- const ItemDetail = ({product = {}}) => {
-
+ const ItemDetail = ({producto = {}}) => {
     const [isCount, setIsCount] = useState(true)
-    const { agregarAlCarrito, cartList} = useCartContext()
+
+    const {agregarCarrito, cartItem} = useCartContext()
 
     const onAdd = (count) => {
-      console.log(count) 
-      agregarAlCarrito({...product, cantidad:count})
+      console.log(count)
+      agregarCarrito(producto)
     }
+    // 
+    // const { agregarAlCarrito, cartList} = CartContextProvider()
 
-    console.log(cartList)
+    // const onAdd = (count) => {
+    //   console.log(count) 
+    //   agregarAlCarrito({...producto, cantidad:count})
+    //   setIsCount(false)
+    // }
+
+    // console.log(cartList)
 
     return (
       <div className='row'>
                     <div className='col'>
                         <div className='row'>
                             <div className='col'>
-                                <img src= {product.image} alt={product.name} className="w-100" />
+                                <img src= {producto.image} alt={producto.name} className="w-100" />
                             </div>    
                             <div className='col'>
-                              <h2>Nombre: {product.name}</h2>
-                              <p>Precio: {product.price} </p>
-                              <p>Stock: {product.stock}</p>
+                              <h2>Nombre: {producto.name}</h2>
+                              <p>Precio: {producto.price} </p>
+                              <p>Categoria: {producto.categoria} </p>
+                              <p>Stock: {producto.stock}</p>
                             </div>
                         </div>
                         <div className='producto__button' style= { { display:'flex', flexDirection: 'col', justifyContent: 'center', flexWarp: 'warp'}}>
@@ -37,7 +47,16 @@ import { useState } from 'react';
                         
                     </div>
                     <div className='col'>
-                      <ItemCount initial={1} stock={5} onAdd={onAdd} />
+                        { isCount ?
+
+                          <ItemCount initial={1} stock={5} onAdd={onAdd} />
+                        :
+
+                          <Link to='/cart'>
+                            <button className='btn btn-outline-primary'> IR AL CARRITO</button>
+                          </Link>
+
+                          }
                     </div>
                     
                 </div>

@@ -2,44 +2,51 @@ import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import Loading from '../../components/Loading/Loading'
 import { TextComponent } from '../../components/Loading/TextComponent'
-import Producto from '../../components/helpers/Producto'
-import { collection, doc, getDoc, getDocs, getFirestore } from 'firebase/firestore'
+import Productos from '../../components/helpers/Producto'
+import {doc, collection, getDoc, getFirestore} from "firebase/firestore"
+
 import {useEffect ,useState} from 'react'
 
 
 
 const ItemDetailContainer = () => {
 
-  const [product, setProducts] = useState([{}])
-  const {categoriaId} = useParams()
-  const [loading, setLoading] = useState(true)
+  const [producto, setProducto] = useState({})
+  const {productId} = useParams()
+  
+  useEffect(() => {
+    const db = getFirestore()
+    const queryProduct = doc(db, 'item', productId)
+    getDoc(queryProduct)
+    .then(resp => setProducto({ id:resp.id, ...resp.data()}))
+  }, [productId])
   
 
-  useEffect ( () =>{
-    Producto(categoriaId)
-    if (categoriaId) {
-      Producto()
-      .then(resp => setProducts(resp.fitler(product =>product.categoria === categoriaId)))
-      .catch (err => console.log(err))
-      .finally(() => setLoading(false))
-    }
-  },[])
+  // useEffect ( () =>{
+  //   Productos(productId)
+  //   .then(data => setProducto(data))
+  // },[productId])
  
 
 
   
   return (
-    loading ?
-    <Loading/>
-    :
-  <div style = {{textAlign:'center', marginTop: 200 }}>
 
-   
+  <div>
+    
+    {
+      producto.id ?
+              <ItemDetail producto = {producto} />
+
+              :
+
+              <h1>Aguarde un momento...</h1>
+    }
 
 
-    <TextComponent> 
-      <ItemDetail product={product} />
-    </TextComponent> 
+    {/* <TextComponent> 
+      <ItemDetail producto={producto} />
+    </TextComponent>  */}
     
     
   </div>

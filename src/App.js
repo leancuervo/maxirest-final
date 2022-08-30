@@ -6,31 +6,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './containers/ItemDetailContainer/ItemDetailContainer';
-import React, { Suspense, useState } from 'react';
-import { useCartContext } from './context/CartContext';
+import React, { lazy, Suspense } from 'react';
+import CartContextProvider from './context/CartContext';
 import CartContainer from './containers/CartContainer/CartContainer';
 import { Input } from './components/paginas/Input';
 
 
 
 
-class App extends React.Component {
+function App () {
 
-  render() {
-    return(
+      return(
       <div className='app'>
 
           
           <BrowserRouter>
-                <useCartContext>
-                    <div className="App border border-1 border-danger">
+                <CartContextProvider >
+                    <div 
+                      className="App border border-1 border-danger">
                       <Navbar />
                       
                       <Routes>
                           <Route index path='/' element={<ItemListContainer/>} />
                           <Route index path='/categoria/:categoriaId' element={<ItemListContainer/>} />
                           <Route path='/detalle/:productoId' element ={
-                            <Suspense fallback={<div>Cargando...</div>}>
+                            <Suspense fallback={<div>Aguarde un momento...</div>}>
                               <ItemDetailContainer/>
                             </Suspense>
                           } />
@@ -42,7 +42,7 @@ class App extends React.Component {
                       </Routes>
                         
                     </div>
-                </useCartContext>
+                </CartContextProvider>
           </BrowserRouter>
           
           
@@ -50,7 +50,7 @@ class App extends React.Component {
       </div>
     )
   }
-}
+
 
 
 export default App;

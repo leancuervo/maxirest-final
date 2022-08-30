@@ -6,21 +6,21 @@ import Item from '../navegacion/Item'
 
 const ItemList = ({products}) => {
 
-       let [productos, setProductos] = useState ([]);
+      //  let [productos, setProductos] = useState ([]);
 
-       useEffect (() => {
-         let promesa = Producto(true, 2000);
-         promesa.then (( response) => {
-           setProductos (response);
-           console.log(productos);
-         });
-       },[])
-
+      //  useEffect (() => {
+      //    let promesa = Producto(true, 2000);
+      //    promesa.then (( response) => {
+      //      setProductos (response);
+      //      console.log(productos);
+      //    });
+      //  },[])
+  console.log('ItemList')
   return (
           <div className='productContainer' >
-              {productos.map( item => 
+              {products?.map( prod => 
               
-                      <Item item={item} key={item.id}/>
+                      <Item key={prod.id} prod={prod} />
 
               )}
         </div>

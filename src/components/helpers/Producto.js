@@ -13,21 +13,12 @@ productos.push(p3);
 productos.push(p4);
 productos.push(p5);
 
-export const Productos = (resolution, delay) => {
-    let promesa = new Promise ((resolve, reject) =>{
-        setTimeout(()=>{
-            if (resolution) {
-                resolve(productos)
-            } else {
-                reject("No se pudo encontrar el productos seleccionado, disculpe las molestias.")
-            }
-        }, delay);
-    });
-    console.log ("Productos");
-    console.log (productos);
-    console.log ("Promesa");
-    console.log (promesa);
-    return (promesa)
+export const Productos = () => {
+    return new Promise ((resolve, reject) =>{
+        setTimeout(() =>{
+            resolve(productos)
+        }, 2000)
+    })
 
 }
 

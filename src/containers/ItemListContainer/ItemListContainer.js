@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import ItemList from '../../components/ItemList/ItemList'
-import Producto from '../../components/helpers/Producto'
 import Loading from '../../components/Loading/Loading'
-import { ProductsData } from '../../Data/ProductsData'
+import Productos from '../../components/helpers/Producto'
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 
 const ItemListContainer = () => {
 
-    const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
-  const {ProductsData} = useParams()
+  const [products, setProducts] = useState([])
+  const [product, setProduct] = useState({})
+  const [loading, setLoading] = useState(true)
+  const {categoriaId} = useParams()
   const [bool, setBool] = useState(true)
 
+  // useEffect(() => {
+  //   const db = getFirestore()
+  //   const queryProduct = doc(db, 'items', 'ySOHvLoXhFeaUVYSVEJN ')
+  //   getDoc(queryProduct)
+  //   .then(resp => setProduct({id:resp.id, ...resp.data()}))
+  // }, [])
+
   useEffect ( () =>{
-    if (ProductsData) {
-      Producto()
-      .then(resp => setProducts(resp.fitler(product =>product.categoria === ProductsData)))
+    if (categoriaId) {
+      Productos()
+      .then(resp => setProducts(resp.fitler(product =>product.categoria === categoriaId)))
       .catch (err => console.log(err))
       .finally(() => setLoading(false))
     }else {
-      Producto()
+      Productos()
       .then(resp => setProducts(resp))
       .catch (err => console.log(err))
       .finally(() => setLoading(false))
     }
     
-  }, [ProductsData])
+  }, [Productos])
 
   const handleClick=(e)=>{
         e.preventDefault()
